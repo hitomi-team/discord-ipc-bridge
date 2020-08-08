@@ -19,19 +19,26 @@ something like that.
 Compiling
 =========
 
-    i686-w64-mingw32-gcc -masm=intel main.c -o winediscordipcbridge
+    i686-w64-mingw32-gcc -masm=intel -mconsole main.c -o winediscordipcbridge
 
 Usage
 =====
 
-Just run this program first, wait for it to start listening to the pipe, and
-then launch your program/game. The two programs need to be running under the
-same wineprefix. If you're using Steam Play/Proton, download and follow the
-instructions in `winediscordipcbridge-steam.sh`.
+Run `make install` to install the bridge as a service that runs automatically.
+You can change the wine binary and wineprefix of the installation by setting
+the `WINE` and `WINEPREFIX` variables respectively.
 
-This program should automatically stop once the other program stops.
+For example, to install the bridge under the default Proton 5.0 prefix:
+
+```
+make install WINE=~/.steam/root/steamapps/common/Proton\ 5.0/dist/bin/wine \
+  WINEPREFIX=~/.steam/root/steamapps/common/Proton\ 5.0/dist/share/default_pfx
+```
+
+You can uninstall the service by running `make uninstall`. You must
+use the same `WINE` and `WINEPREFIX` variables you used to install it.
 
 Disclaimer
 ==========
 
-I've only tested this with osu! on Arch Linux with a 32-bit wineprefix.
+This has only been tested under a 32-bit wineprefix.
