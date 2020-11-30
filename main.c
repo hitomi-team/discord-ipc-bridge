@@ -267,12 +267,12 @@ int main(void)
     CloseHandle(CreateThread(NULL, 0, wait_for_client, NULL, 0, NULL));
     for (;;) {
         HANDLE events[] = { wine_evt, conn_evt };
-        DWORD result = WaitForMultipleObjectsEx(2, events, FALSE, 0, FALSE);
+        DWORD result = WaitForMultipleObjectsEx(2, events, FALSE, INFINITE, FALSE);
         if (result == WAIT_TIMEOUT)
 	    continue;
 
         if (result == 0) {
-            printf("Bridge exiting, wine closing\n");
+            printf("closing bridge since wine is exiting\n");
         }
 
         break;
