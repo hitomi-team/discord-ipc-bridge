@@ -1,4 +1,4 @@
-Wine Discord IPC Bridge
+Discord IPC Bridge
 =======================
 
 This program enables other programs which are running under Wine to send Rich
